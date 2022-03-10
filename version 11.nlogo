@@ -1,3 +1,7 @@
+Globals [
+  wait-interval
+]
+
 breed [ houses house ]
 breed [ big-buildings big-building ]
 breed [ commercial-buildings commercial-building ]
@@ -7,570 +11,45 @@ breed [ sewage-plant-stations sewage-plant-station ]
 
 breed [ electricity-power-stations electricity-power-station ]
 breed [ overhead-cable-stations overhead-cable-station ]
+breed [ telecommunication-stations telecommunication-station ]
+breed [ rail-transport-stations rail-transport-station ]
+
+breed [ nodes node ]
+
 
 to setup
   clear-all
   reset-ticks
   setup-landscape
-  setup-network
+  setup-nodes
 
   if (show-grid = true ) [
     draw-grid ;for the switch to hide or show the gride
   ]
+  set wait-interval 0.1
 
-  if (show-eletricity = true) [
-    draw-electricity ; for the swtich to hide or show the gride
-  ]
-
-  if (show-sewage = true) [
-    draw-sewage ; for the swtich to hide or show the gride
-  ]
-
-  if (show-water = true) [
-    draw-water ; for the swtich to hide or show the gride
-  ]
 end
-
-
-to setup-network
-    draw-networks ; designing lines and colour coordinate them to show what each network are.
-end
-
-to draw-networks ; list of networks that has been drawn.
-  draw-electricity
-  draw-sewage
-  draw-water
-end
-
-to draw-water
-  create-turtles 1 [ ;FOR THE HOUSE AND BIG BUILDINGS
-    setxy 37 -18
-    set heading 90
-    set color blue
-    set pen-size 2.5
-    pen-down
-    left 180
-    fd 10
-    right 90
-    fd 9
-    right 90
-    fd 3
-    right 90
-    fd 3
-    back 6
-    fd 3
-    right 90
-    fd 7
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 7
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 3
-    right 90
-    fd 19
-    right 90
-    fd 3
-    right 90
-    fd 4
-    back 9
-    fd 5
-    left 90
-    fd 4
-    right 90
-    fd 8
-    back 8
-    left 90
-    fd 3
-    right 90
-    fd 4
-    back 9
-    fd 5
-    left 90
-    fd 4
-    right 90
-    fd 8
-    back 8
-    left 90
-    fd 3
-    right 90
-    fd 4
-    back 9
-    die
-  ]
-
-  create-turtles 1 [ ;FOR THE COMMERICAL BUILDING
-    setxy -37 -18
-    set heading 90
-    set color blue
-    set pen-size 2.5
-    pen-down
-    left 90
-    fd 14
-    right 90
-    fd 12
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 10
-    left 90
-    fd 3
-    back 6
-    fd 3
-    right 90
-    fd 10
-    right 90
-    fd 3
-    back 6
-    fd 3
-    die
-  ]
-end
-
-to draw-sewage
-  create-turtles 1 [ ;FOR HOUSE AND BIG BUILDINGS
-    setxy 38 -1
-    set heading 90
-    set color green
-    set pen-size 2.5
-    pen-down
-    right 90
-    fd 8
-    right 90
-    fd 8
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 7
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 7
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 3
-    right 90
-    fd 19
-    right 90
-    fd 3
-    right 90
-    fd 4
-    back 9
-    fd 5
-    left 90
-    fd 4
-    right 90
-    fd 8
-    back 8
-    left 90
-    fd 3
-    right 90
-    fd 4
-    back 9
-    fd 5
-    left 90
-    fd 4
-    right 90
-    fd 8
-    back 8
-    left 90
-    fd 3
-    right 90
-    fd 4
-    back 9
-    die
-  ]
-
-  create-turtles 1 [ ;FOR COMMERICAL BUILDING
-    setxy -18 -18
-    set heading 90
-    set color green
-    set pen-size 2.5
-    pen-down
-    right 180
-    back 7
-    right 90
-    fd 7
-    right 90
-    fd 9
-    left 90
-    fd 7
-    left 90
-    fd 3
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 10
-    right 90
-    fd 3
-    back 6
-    fd 3
-    left 90
-    fd 10
-    right 90
-    fd 3
-    back 6
-    fd 3
-    die
-  ]
-end
-
-to draw-electricity
-  ;HOUSE
-  create-turtles 1 [ ;house 1
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    fd 54
-    right 90
-    fd 3
-    die
-  ]
-
-  create-turtles 1 [ ;house 2
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 61
-    right 90
-    fd 3
-    die
-  ]
-
-  create-turtles 1 [ ; house 3
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 68
-    right 90
-    fd 3
-    die
-  ]
-
-  create-turtles 1 [ ; house 4
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 2
-    left -90
-    back 4
-    die
-  ]
-
-  create-turtles 1 [ ; house 5
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 9
-    left -90
-    back 4
-    die
-  ]
-
-  create-turtles 1 [ ; house 6
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 16
-    left -90
-    back 4
-    die
-  ]
-
-  create-turtles 1 [ ; house 7
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 18
-    left 90
-    back 5
-    right 90
-    back 2
-    die
-  ]
-
-  create-turtles 1 [ ; house 8
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 18
-    left 90
-    back 12
-    right 90
-    back 2
-    die
-  ]
-
-  ; BIG BUILDINGS ROW
-  create-turtles 1 [ ; building 1
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 19
-    left -90
-    back 19
-    right 90
-    fd 3
-    right 90
-    back 3
-    die
-  ]
-
-  create-turtles 1 [ ; building 2
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 19
-    left -90
-    back 19
-    right 90
-    fd 10
-    right 90
-    back 3
-    die
-  ]
-
-  create-turtles 1 [ ; building 3
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 19
-    left -90
-    back 19
-    right 90
-    fd 17
-    right 90
-    back 3
-    die
-  ]
-
-   create-turtles 1 [ ; building 4
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 19
-    left -90
-    back 19
-    right 90
-    fd 3
-    right 90
-    fd 3
-    die
-  ]
-
-  create-turtles 1 [ ; building 5
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 19
-    left -90
-    back 19
-    right 90
-    fd 10
-    right 90
-    fd 3
-    die
-  ]
-
-  create-turtles 1 [ ; building 6
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    forward 70
-    right 90
-    fd 8
-    right 90
-    fd 19
-    left -90
-    back 19
-    right 90
-    fd 17
-    right 90
-    fd 3
-    die
-  ]
-
-  ;COMMERICAL BUILDINGS
-   create-turtles 1 [ ;COMMERICAL BUILDINGS 1
-    setxy -38 18
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    fd 22
-    left 90
-    fd 33
-    die
-  ]
-
-   create-turtles 1 [ ;COMMERICAL BUILDINGS 2
-    setxy -25 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    fd 2
-    die
-  ]
-
-  create-turtles 1 [ ;COMMERICAL BUILDINGS 3
-    setxy -25 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    back 3
-    die
-  ]
-
-  create-turtles 1 [ ;COMMERICAL BUILDINGS 4
-    setxy -15 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    fd 2
-    die
-  ]
-
-  create-turtles 1 [ ;COMMERICAL BUILDINGS 5
-    setxy -15 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    back 3
-    die
-  ]
-
-  create-turtles 1 [ ;COMMERICAL BUILDINGS 6
-    setxy -5 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    fd 2
-    die
-  ]
-
-  create-turtles 1 [ ;COMMERICAL BUILDINGS 7
-    setxy -5 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    back 3
-    die
-  ]
-
-  create-turtles 1 [ ;COMMERICAL BUILDINGS 8
-    setxy -25 -4
-    set heading 90
-    set color black
-    set pen-size 2.5
-    pen-down
-    right 90
-    fd 2
-    die
-  ]
-end
-
 
 to setup-landscape
   ask patches [
     set pcolor pink
   ]
-
   draw-entities
+end
 
+to setup-nodes
+  set-default-shape houses "house"
+  set-default-shape big-buildings "bigbuildings"
+  set-default-shape commercial-buildings "commercialbuilding"
+  set-default-shape water-pumping-stations "producewater"
+  set-default-shape sewage-plant-stations "sewage"
+  set-default-shape electricity-power-stations "sewage"
+  ask nodes [ create-link-with one-of other nodes ]
+  repeat 500 [ layout]
+end
+
+to layout
+  layout-spring nodes links 0.5 2 1
 end
 
 to draw-entities
@@ -579,7 +58,9 @@ to draw-entities
   draw-water-pumping-stations
   draw-sewage-plant-stations
   draw-electricity-power-stations
+  draw-telecommunication-stations
   draw-commercial-buildings
+  draw-rail-transport-stations
 end
 
 to draw-houses ; setting house as stationary not going to move at all
@@ -594,7 +75,6 @@ to draw-houses ; setting house as stationary not going to move at all
 
   ask houses [
     set size 1.5
-    set shape "house"
     set color red
   ]
 end
@@ -609,7 +89,6 @@ to draw-big-buildings ; setting big buildings as stationary not going to move at
 
   ask big-buildings [
     set size 2
-    set shape "bigbuildings"
     set color white
   ]
 end
@@ -620,7 +99,6 @@ to draw-water-pumping-stations ; setting water pumping statoins as stationary no
 
   ask water-pumping-stations [
     set size 2
-    set shape "producewater"
     set color blue
   ]
 end
@@ -631,7 +109,6 @@ to draw-sewage-plant-stations ; setting sewage plant station as stationary not g
 
   ask sewage-plant-stations [
     set size 2
-    set shape "sewage"
     set color green
   ]
 end
@@ -646,6 +123,16 @@ to draw-electricity-power-stations ; setting eletricity power station as station
   ]
 end
 
+to draw-telecommunication-stations ; setting telecommunication-station as stationary not going to move at all
+  ask patch -33 -13 [ sprout-telecommunication-stations 6]
+
+  ask telecommunication-stations[
+    set size 2
+    set shape "telecommunication"
+    set color 102
+  ]
+end
+
 to draw-commercial-buildings ; setting commerical buildings as stationary not going to move at all
   ask patch -5 -1 [ sprout-commercial-buildings 7 ]
   ask patch -5 -6 [ sprout-commercial-buildings 7 ]
@@ -656,10 +143,22 @@ to draw-commercial-buildings ; setting commerical buildings as stationary not go
 
   ask commercial-buildings [
     set size 2
-    set shape "commercialbuilding"
     set color orange
   ]
 end
+
+to draw-rail-transport-stations ; setting rail transport station as stationary not going to move at all
+  ask patch 3 14 [sprout-rail-transport-stations 8 ]
+  ask patch 6 -18 [sprout-rail-transport-stations 8 ]
+  ask patch -34 4  [sprout-rail-transport-stations 8 ]
+
+  ask rail-transport-stations [
+    set size 2
+    set shape "rail transport station"
+    set color yellow
+  ]
+end
+
 
 to draw-grid ; allows me to pinpoint where each turtle is properly ( helps me to debug the code)
   ask patches [
@@ -679,16 +178,23 @@ to draw-grid ; allows me to pinpoint where each turtle is properly ( helps me to
 end
 
 to go
+  if not any? turtles [ stop ]
+  ask one-of turtles
+    [ create-link-with one-of other turtles ]
+  while [count links > number-of-links]
+    [ ask one-of links [ die ] ]
+  tick
 end
+
 @#$#@#$#@
 GRAPHICS-WINDOW
-665
-20
-1483
-439
+272
+13
+1063
+418
 -1
 -1
-10.0
+9.67
 1
 10
 1
@@ -709,12 +215,12 @@ ticks
 30.0
 
 BUTTON
-196
-23
-314
-56
+482
+470
+545
+503
 NIL
-Setup
+setup
 NIL
 1
 T
@@ -726,290 +232,47 @@ NIL
 1
 
 SWITCH
-195
-80
-313
-113
+622
+473
+756
+506
 show-grid
 show-grid
 1
 1
 -1000
 
-SWITCH
-339
-133
-477
-166
-show-eletricity
-show-eletricity
-1
-1
--1000
-
-SWITCH
-340
-83
-478
-116
-show-sewage
-show-sewage
-1
-1
--1000
-
-SWITCH
-340
-24
-478
-57
-show-water
-show-water
-1
-1
--1000
-
-SWITCH
-194
+BUTTON
+173
+101
+236
 134
-312
-167
-interruption
-interruption
+NIL
+go
+T
 1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
 1
--1000
 
 SLIDER
-34
-197
-315
-230
-commercial-building-income
-commercial-building-income
+84
+273
+256
+306
+number-of-links
+number-of-links
 0
 100
 50.0
 1
 1
-£/day
+NIL
 HORIZONTAL
-
-SLIDER
-35
-245
-314
-278
-residential-building-income
-residential-building-income
-0
-100
-50.0
-1
-1
-£/day
-HORIZONTAL
-
-SLIDER
-339
-320
-619
-353
-income-regrowth-time
-income-regrowth-time
-0
-100
-40.0
-1
-1
-£/day
-HORIZONTAL
-
-SLIDER
-340
-196
-621
-229
-water-station-cost
-water-station-cost
-0
-100
-10.0
-1
-1
-£/day
-HORIZONTAL
-
-SLIDER
-339
-245
-620
-278
-eletricity-station-cost
-eletricity-station-cost
-0
-100
-20.0
-1
-1
-£/day
-HORIZONTAL
-
-MONITOR
-39
-391
-319
-436
-Water Station
-20\n; Work in Progress\n; Dummy value assigned\n; water-station
-17
-1
-11
-
-MONITOR
-340
-391
-620
-436
-Eletricity Station
-10\n; Work in Progress\n; Dummy value assigned\n; eletricity-station
-17
-1
-11
-
-PLOT
-664
-660
-1055
-836
-Residential Building Consumtion
-Time of Day
-Consumption
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"HOUSE 1 " 1.0 0 -16777216 true "" "plot count turtles"
-"HOUSE 2 " 1.0 0 -7500403 true "" ""
-"HOUSE 3" 1.0 0 -2674135 true "" ""
-"HOUSE 4" 1.0 0 -955883 true "" ""
-"HOUSE 5" 1.0 0 -6459832 true "" ""
-"HOUSE 6" 1.0 0 -1184463 true "" ""
-
-PLOT
-666
-458
-1057
-634
-Commerical Building Consumption
-Time of Day
-Consumption
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"building 1 " 1.0 0 -16777216 true "" "plot count turtles"
-"building 2" 1.0 0 -7500403 true "" ""
-"building 3" 1.0 0 -2674135 true "" ""
-"building 4" 1.0 0 -955883 true "" ""
-
-PLOT
-38
-458
-625
-634
-Interruption Occured
-occured
-time 
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"interruption occured " 1.0 0 -16777216 true "" "plot count turtles"
-
-PLOT
-1087
-661
-1478
-837
-Resisdential Income and Debts
-Time
-Income
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"HOUSE 1" 1.0 0 -16777216 true "" "plot count turtles"
-"HOUSE 2" 1.0 0 -7500403 true "" ""
-"HOUSE 3" 1.0 0 -2674135 true "" ""
-"HOUSE 4" 1.0 0 -955883 true "" ""
-"HOUSE 5" 1.0 0 -6459832 true "" ""
-"HOUSE 6" 1.0 0 -1184463 true "" ""
-
-PLOT
-1088
-460
-1479
-636
-Commerical Income 
-Time
-Income
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"building 1" 1.0 0 -16777216 true "" "plot count turtles"
-"building 2" 1.0 0 -7500403 true "" ""
-"building 3" 1.0 0 -2674135 true "" ""
-"building 4" 1.0 0 -955883 true "" ""
-
-PLOT
-37
-656
-625
-832
-Sewage Consumption 
-time
-consumption 
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"Sewage plant" 1.0 0 -16777216 true "" "plot count turtles"
-
-CHOOSER
-34
-315
-314
-360
-time-of-day
-time-of-day
-"morning" "afternoon" "evening" "night"
-0
 
 @#$#@#$#@
 ## WHAT IS IT?
